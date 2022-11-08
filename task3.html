@@ -8,25 +8,22 @@
 <body>
 <div id="container"></div>
 <script>
-    let container = document.getElementById("container");
-    for (let i = 0; i < 5; i++) {
-      container.innerHTML += `<div class='element'>Element ${i + 1}</div>`;
+    function indexColor() {
+    color='rgb('+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+', '+Math.round(Math.random()*255)+')';
+    return color;
     }
-
-    let Color = document.getElementsByClassName("element");
-    for (let i = 0; i < Color.length; i++) {
-      colors = [
-        "#AA0000",
-        "#00AA00",
-        "#0000AA",
-        "#AA0055",
-        "#AA5500",
-        "#ffc610",
-      ];
-      for (let i = 0; i < colors.length; i++) {
-        Color[i].style.color = colors[i];
-      }
+    
+    const addDivElement = () => {
+        const divs = document.getElementById('container');
+        for (let i = 0; i < 5; i++) {
+            const addDiv = document.createElement('div');
+            divs.append(addDiv);
+            addDiv.className = 'element';
+            addDiv.innerHTML = 'Element' + ' ' + `<a style='color: ${indexColor()};'>${i+1}</a>`;
+        }
+        console.log(divs);
     }
-  </script>
+    addDivElement();
+ </script>
 </body>
 </html>
